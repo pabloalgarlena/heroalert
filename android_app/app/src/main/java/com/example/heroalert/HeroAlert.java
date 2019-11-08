@@ -24,25 +24,29 @@ public class HeroAlert extends AppWidgetProvider {
     SharedPreferences prefs;
 
     void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId, RemoteViews views) {
+                         int appWidgetId, RemoteViews views) {
         Log.d("Widget", "updating widget 1st method");
         prefs = context.getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
         String json = prefs.getString("Json", "");
         JSONObject jsonOb = null;
-        int meter = 200;
+        int level = 200;
         try {
             jsonOb = new JSONObject(json);
-            meter = (int) (jsonOb.getDouble("meter") * 255);
-            if (meter>255) {
-                meter = 255;
+            Double meter = jsonOb.getDouble("meter");
+            meter = meter - 1;
+            if (meter < 0) {
+                meter = 0.5;
+            }
+            level = (int) (meter * 255 / 3);
+            if (level > 255) {
+                level = 255;
             }
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
         Log.d("Widget json", json);
-        Random random = new Random();
-        views.setInt(R.id.heroalert_icon, "setAlpha", meter);
+        views.setInt(R.id.heroalert_icon, "setAlpha", level);
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
 
