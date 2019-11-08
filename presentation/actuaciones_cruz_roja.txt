@@ -1,0 +1,32 @@
+1 - LOCAL (afecta a un entorno local pequeña)
+
+0.40  - Acompañamiento al centro de día
+0.40  - Refuerzo escolar
+0.50  - Impartición de cursos de idiomas (castellano y lenguas cooficiales)
+0.50  - Acompañamiento a hacer la compra
+0.60  - Acompañamiento al médico
+0.80  - Ayuda a personas sin techo en invierno (mantas, bebida caliente, medicamentos...)
+
+2 - DISTRITO / NEIGHBORHOOD (afecta a un entorno local grande)
+
+0.50  - Visita a niños enfermos en el hospital
+0.50  - Colaboración en banco de alimentos
+0.50  - Colaboración en recogida de material escolar
+0.50  - Colaboración en recogida de juguetes para la campaña de Navidad
+0.70  - Visita a pisos con personas refugiadas
+0.80  - Ayuda a personas sin techo
+
+3 - GLOBAL (constante con la distancia)
+
+0.10  - Ocio para familias desfavorecidas durante el fin de semana
+0.10  - Impartición de cursos de voluntarios digitales
+0.20  - Talleres de empleo
+0.30  - Visitas a asentamientos de infraviviendas
+0.50  - Impartición de cursos para inserción laboral de los MENAS (Menores Extranjeros No Acompañados)
+0.60  - Asistencia rutinaria de personas mayores
+0.70  - Ayuda sanitaria a mujeres en zonas de prostitución (análisis, pruebas vih...)
+0.70  - Visita a mujeres desfavorecidas
+0.80  - Ayuda en casos de víctimas de trata
+0.90  - Mujeres ayudan a mujeres
+0.90  - Asistencia de urgencia a personas mayores
+1.00 - Ayuda en casos urgentes de violencia de género

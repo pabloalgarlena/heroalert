@@ -1,0 +1,35 @@
+---------------------------------------------------------
+EQUINOX NOVIEMBRE 2019 - CRUZ ROJA - PROYECTO HERO ALERT
+---------------------------------------------------------
+
+Buenos días. No sé si os ha pasado a vosotros, yo al menos lo que conocía de la Cruz Roja son las campañas de donación de sangre y la recaudación de fondos para ayuda humanitaria pero tras recabar información con los compañeros de Cruz Roja, Blas y Jose Manuel, quedamos sorprendidos con la cantidad de proyectos que tienen abiertos.
+
+Por otro lado tenemos 200.150 voluntarios que quieren colaborar con alguna causa solidaria pero tampoco saben donde pueden acudir ni qué actuaciones necesitan ayuda.
+
+Ya hubo una persona que resolvió este problema hace décadas, fue Bruce Wayne, él se comunicaba con la policia de Gotham mediante una señal luminosa que la policía proyectaba en el cielo.
+
+--> DIAPOSITIVA 1 - HERO ALERT EN EL CIELO CON BATMAN 
+
+Si analizamos programáticamente la solución de Bruce veremos que la señal del cielo es una variable booleana única ya que sólo tenían una comisaria en Gotham y además la información geográfica de la señal es estática.
+
+--> DIAPOSITIVA 2 - BATMAN INGENIERO
+
+Una pregunta que todos seguramente nos hemos hecho, ¿que hubiera pasado si Bruce Wayne fuera ingeniero? Pues seguramente habría pensado en nuestra solución, que hemos llamado Hero Alert
+
+--> DIAPOSITIVA 3 - TECNOLOGÍAS DEL PROYECTO
+
+Nuestro proyecto se basa en un widget de android que todos los voluntarios tendrán en su móvil. Este widget obtiene la localización geográfica del usuario y realiza una petición a un servidor desarrollado en python.
+
+Para la información de las actuaciones hemos utilizado el servicio de geolocalización QGIS y hemos establecido 3 categorías: global (no es crítica la distancia), distrito (varios bloques de edificios) y local (edificios colindantes) así como unas magnitudes asociadas a cada evento que van desde nivel 0.1 que tiene el "Refuerzo escolar" hasta el nivel 1.0 que tiene la "Violencia de género"
+
+El servidor realiza una consulta a QGIS para obtener una base de datos con información detallada (categoría, magnitud, geolocalización) de todas las actuaciones que Cruz Roja tiene en la zona que está el usuario.
+
+Una vez obtenida esa información, realiza una comparación basada en la distancia y magnitud de cada una de las actuaciones, generando un array con el listado de los eventos ordenados por relevancia para el usuario.
+
+El widget finalmente recibe ese array de elementos que mostrará cuando el usuario abra el widget.
+
+Finalmente si el usuario decide pulsar sobre un evento determinado le llevará a la ubicación del mismo en Google Maps.
+
+Mejora: se podría añadir un formulario con datos personales (nombre, apellidos y género) para filtrar actuaciones en las que sólo pueden acudir mujeres. Por ejemplo, casos de violencia de género o el proyecto "Mujeres ayudan a mujeres"
+
+--> EMPEZAMOS CON LA DEMO
