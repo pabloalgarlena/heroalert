@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         int PERMISSION_ALL = 1;
 
         String[] PERMISSIONS = {
-                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION,
                 Manifest.permission.INTERNET,
                 Manifest.permission.FOREGROUND_SERVICE,
                 Manifest.permission.WAKE_LOCK

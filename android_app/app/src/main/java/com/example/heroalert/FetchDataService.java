@@ -46,18 +46,22 @@ public class FetchDataService extends Service {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             List<Location> locationList = locationResult.getLocations();
-            if (locationList.size() != 0) {
-                Location location = locationList.get(0);
+            Location location = locationList.get(0);
+            for (int i=0; i<locationList.size(); i++){
+                location = locationList.get(i);
                 Log.d("AppLocationService", "Latitude  - " + location.getLatitude() + ", longitude  - " + location.getLongitude());
             }
+            editor.putString("Latitude", String.valueOf(location.getLatitude()));
+            editor.putString("Longitude", String.valueOf(location.getLongitude()));
+            editor.apply();
         }
     };
 
 
     public void updateLocation(final double latitude, final double longitude) {
-        Log.d("Service", "Updating location degrees: " + latitude + "/" + longitude);
+        Log.d("Service", "Getting actions around location degrees: " + latitude + "/" + longitude);
         Deg2UTM utm = new Deg2UTM(latitude, longitude);
-        Log.d("Service", "Updating location utm: " + utm.Easting + "/" + utm.Northing);
+        Log.d("Service", "Getting actions around location utm: " + utm.Easting + "/" + utm.Northing);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         String url = String.format("http://linux-516376.hi.inet:8080/herometer/?easting=%s&northing=%s", utm.Easting, utm.Northing);
