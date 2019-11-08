@@ -1,0 +1,70 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="Perfil">
+
+        <ListPreference
+            app:defaultValue="No definido"
+            app:entries="@array/genres"
+            app:entryValues="@array/genres_normalized"
+            app:key="sex"
+            app:title="Sexo"
+            app:useSimpleSummaryProvider="true" />
+
+
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Colectivos vulnerables">
+
+        <SwitchPreferenceCompat
+            app:key="infancia"
+            app:title="Infancia"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="jovenes"
+            app:title="Jóvenes"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="mayores"
+            app:title="Personas mayores"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="desempleados"
+            app:title="Desempleados"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="enfermos"
+            app:title="Personas enfermas"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="refugiados"
+            app:title="Inmigrantes y refugiados"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="mujeres"
+            app:title="Mujeres en dificultad social"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="discapacitados"
+            app:title="Personas con discapacidad"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="reclusos"
+            app:title="Población reclusa"
+            app:defaultValue="true"
+            />
+        <SwitchPreferenceCompat
+            app:key="homeless"
+            app:title="Personas sin hogar"
+            app:defaultValue="true"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -18,15 +18,6 @@
             android:background="#9D0101"
             app:popupTheme="@style/AppTheme.PopupOverlay" >
 
-            <TextView
-                android:id="@+id/toolbarTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="HÉROES CRUZ ROJA"
-                android:textAppearance="@android:style/TextAppearance.WindowTitle"
-                android:visibility="visible" />
 
         </androidx.appcompat.widget.Toolbar>
 
