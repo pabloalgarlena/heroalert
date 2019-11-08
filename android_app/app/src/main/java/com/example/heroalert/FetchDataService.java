@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Handler;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -62,9 +63,9 @@ public class FetchDataService extends Service {
         Log.d("Service", "Getting actions around location degrees: " + latitude + "/" + longitude);
         Deg2UTM utm = new Deg2UTM(latitude, longitude);
         Log.d("Service", "Getting actions around location utm: " + utm.Easting + "/" + utm.Northing);
-
+        String sex = getDefaults("sex", getApplicationContext());
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = String.format("http://linux-516376.hi.inet:8080/herometer/?easting=%s&northing=%s", utm.Easting, utm.Northing);
+        String url = String.format("http://linux-516376.hi.inet:8080/herometer/?easting=%s&northing=%s&genre=%s", utm.Easting, utm.Northing, sex);
         Log.d("Service", url);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url ,
                 new Response.Listener<String>() {
@@ -152,14 +153,18 @@ public class FetchDataService extends Service {
                 intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
                 sendBroadcast(intent);
 
-                handler.postDelayed(runnable, 10000);
+                handler.postDelayed(runnable, 5000);
             }
         };
 
 
-        handler.postDelayed(runnable, 15000);
+        handler.postDelayed(runnable, 10000);
     }
 
+    public static String getDefaults(String key, Context context) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        return preferences.getString(key, "none");
+    }
 
 }
 

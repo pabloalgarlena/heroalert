@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.RemoteViews;
@@ -33,7 +34,7 @@ public class HeroAlert extends AppWidgetProvider {
         try {
             jsonOb = new JSONObject(json);
             Double meter = jsonOb.getDouble("meter");
-            meter = meter - 1;
+            meter = meter - 0.5;
             if (meter < 0) {
                 meter = 0.5;
             }
@@ -81,6 +82,7 @@ public class HeroAlert extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
     }
+
 
 }
 
