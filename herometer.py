@@ -68,13 +68,13 @@ distance_factor_calculation = {
 
 
 def hero_meter(hero_easting, hero_northing):
-    total_weight = 0.0
+
     actions_selected = []
 
     # get fresh data from SIG
     con = sqlite3.connect('databases/capa1.sqlite')
     cursor = con.cursor()
-    cursor.execute('select type, magnitude, description, easting, northing from eventos')
+    cursor.execute('select type, magnitude, description, xmin, ymin from eventos, idx_eventos_geometry where pkid = pkuid')
     rows = cursor.fetchall()
     cursor.close()
     con.close()
@@ -90,14 +90,20 @@ def hero_meter(hero_easting, hero_northing):
         print('distance_factor: {}'.format(distance_factor))
         action_weight = action[MAGNITUDE] * distance_factor
         print('action_weight: {}'.format(action_weight))
-        total_weight += action_weight
         actions_selected.append((action_weight, action[EASTING], action[NORTHING], action[DESCRIPTION]))
         print((action_weight, action[DESCRIPTION]))
+        print('---------------')
+
         # 0 weight actions are filtered out
         actions_selected = filter(lambda a: a[0] != 0.0, actions_selected)
         # actions are ordered by weight
         actions_selected = sorted(actions_selected, key=lambda a: a[0], reverse=True)
-        print('---------------')
+        # actions are truncated up to 10
+        actions_selected = actions_selected[0:10]
+
+    total_weight = 0.0
+    for action in actions_selected:
+        total_weight += action[0]
 
     hero_meter_json = {
         'meter': total_weight,
